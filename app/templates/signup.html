@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block public_content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Beta</p>
+    <h1>Crie seu AprovaOS.</h1>
+    <p>Organize rotina, pendências, materiais e revisões sem promessas irreais.</p>
+    <form id="signup-form" class="stack-form">
+      <label>Nome<input name="name" type="text" autocomplete="name" required minlength="2"></label>
+      <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+      <label>Senha<input name="password" type="password" autocomplete="new-password" required minlength="8"></label>
+      <button class="button primary full" type="submit">Criar conta</button>
+    </form>
+    <p class="form-note">Já tem conta? <a href="/login">Entrar</a></p>
+  </div>
+</section>
+{% endblock %}
+

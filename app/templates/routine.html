@@ -1,0 +1,78 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="stack">
+  <div class="two-column">
+    <div class="card stack-form">
+      <div class="card-title"><span>Meu perfil de rotina</span></div>
+      <form id="routine-profile-form" class="stack-form">
+        <label>Vestibulares-alvo<input name="vestibulares_alvo"></label>
+        <label>Série/situação atual<input name="serie"></label>
+        <label>Resumo da rotina<textarea name="rotina_resumo"></textarea></label>
+        <label>Carga horária disponível<input name="carga_horaria_disponivel" placeholder="Ex.: 2h por dia"></label>
+        <label>Principais dificuldades<textarea name="principais_dificuldades"></textarea></label>
+        <label>Metas da semana<textarea name="metas"></textarea></label>
+        <label>Observações<textarea name="observacoes"></textarea></label>
+        <button class="button secondary" type="submit">Salvar perfil</button>
+      </form>
+    </div>
+
+    <div class="card stack-form">
+      <div class="card-title"><span>Assistente de rotina (MVP)</span></div>
+      <p class="muted-text">Digite seu tempo livre. Ex.: tenho 2h seg/qua/sex à noite</p>
+      <form id="routine-planner-form" class="stack-form">
+        <textarea name="message" required placeholder="Ex.: tenho 2h seg/qua/sex à noite"></textarea>
+        <button class="button primary" type="submit">Gerar sugestão</button>
+      </form>
+      <div id="routine-planner-preview" class="task-list"></div>
+      <div class="inline-actions">
+        <button class="button secondary hidden" id="routine-planner-confirm" type="button">Confirmar sugestão</button>
+        <button class="button ghost hidden" id="routine-planner-cancel" type="button">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="two-column">
+    <form id="routine-form" class="card stack-form">
+      <div class="card-title"><span>Novo bloco de rotina</span></div>
+      <input type="hidden" name="id">
+      <label>Título<input name="title" required placeholder="Escola, cursinho, transporte..."></label>
+      <label>Tipo<select name="block_type"><option value="school">Escola</option><option value="course">Cursinho</option><option value="study_window">Janela de estudo</option><option value="transport">Transporte</option><option value="rest">Descanso</option><option value="work">Trabalho</option><option value="personal">Pessoal</option><option value="sleep">Sono</option><option value="other">Outro</option></select></label>
+      <label>Dia da semana<select name="weekday"><option value="0">segunda</option><option value="1">terça</option><option value="2">quarta</option><option value="3">quinta</option><option value="4">sexta</option><option value="5">sábado</option><option value="6">domingo</option></select></label>
+      <div class="inline-fields"><label>Início<input name="start_time" type="time" required></label><label>Fim<input name="end_time" type="time" required></label></div>
+      <label>Recorrência<select name="recurrence"><option value="weekly">Semanal</option><option value="daily">Diária</option><option value="once">Uma vez</option><option value="custom">Personalizada</option></select></label>
+      <label>Descrição<textarea name="description"></textarea></label>
+      <button class="button primary" type="submit">Salvar bloco</button>
+    </form>
+
+    <div class="card">
+      <div class="card-title"><span>Visão semanal</span></div>
+      <div id="routine-week" class="week-board"></div>
+    </div>
+  </section>
+
+  <div class="card">
+    <div class="card-title"><span>Tabela editável da rotina</span></div>
+    <div class="table-wrap">
+      <table class="data-table" id="routine-table">
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Início</th>
+            <th>Fim</th>
+            <th>Tipo</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="routine-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/routine.js') }}" defer></script>
+{% endblock %}

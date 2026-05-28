@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/tutor.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="tutor-layout" aria-label="Tutor IA">
+  <aside class="tutor-sidebar card" aria-label="Histórico e modos">
+    <div class="tutor-sidebar-header">
+      <h2>Conversas</h2>
+      <button id="ai-new-conversation" class="button primary" type="button">Nova conversa</button>
+    </div>
+    <div id="ai-conversation-list" class="tutor-conversation-list" aria-live="polite"></div>
+
+    <div class="tutor-sidebar-header">
+      <h2>Modos</h2>
+    </div>
+    <div class="tutor-mode-list" role="listbox" aria-label="Modo da IA">
+      <button class="tutor-mode-button active" type="button" data-ai-mode="organizador">Organizador</button>
+      <button class="tutor-mode-button" type="button" data-ai-mode="analista">Analista</button>
+      <button class="tutor-mode-button" type="button" data-ai-mode="tutor_fontes">Tutor com fontes</button>
+      <button class="tutor-mode-button" type="button" data-ai-mode="flashcards">Criador de flashcards</button>
+      <button class="tutor-mode-button" type="button" data-ai-mode="recuperacao">Recuperação</button>
+      <button class="tutor-mode-button" type="button" data-ai-mode="priorizador">Priorizador</button>
+    </div>
+  </aside>
+
+  <article class="tutor-main card">
+    <header class="tutor-main-header">
+      <div class="tutor-title-group">
+        <h2>Tutor IA</h2>
+        <span id="ai-active-mode" class="badge">Organizador</span>
+      </div>
+      <div class="tutor-header-actions">
+        <label for="ai-material-select" class="sr-only">Material de apoio</label>
+        <select id="ai-material-select" aria-label="Selecionar material">
+          <option value="">Sem material selecionado</option>
+        </select>
+        <button id="ai-generate-flashcards" class="button secondary" type="button">Gerar flashcards</button>
+        <button id="ai-reorganize-week" class="button secondary" type="button">Reorganizar semana</button>
+      </div>
+    </header>
+
+    <div id="ai-warning-banner" class="tutor-warning hidden" role="status" aria-live="polite"></div>
+
+    <div id="ai-messages" class="tutor-messages" aria-live="polite"></div>
+
+    <section id="ai-empty-state" class="tutor-empty-state">
+      <h3>Como posso organizar seus estudos hoje?</h3>
+      <div class="tutor-quick-actions">
+        <button type="button" class="button ghost" data-quick-message="O que eu estudo hoje?">O que eu estudo hoje?</button>
+        <button type="button" class="button ghost" data-quick-message="Estou atrasado, reorganize minha semana.">Reorganizar minha semana atrasada</button>
+        <button type="button" class="button ghost" data-quick-message="Analise meu último simulado e diga meu foco.">Analisar meu último simulado</button>
+        <button type="button" class="button ghost" data-quick-message="Gerar flashcards de um material.">Gerar flashcards de um material</button>
+        <button type="button" class="button ghost" data-quick-message="Quais são as prioridades da minha semana?">Ver prioridades da semana</button>
+        <button type="button" class="button ghost" data-quick-message="Monte um plano de revisão para a semana.">Montar plano de revisão</button>
+      </div>
+    </section>
+
+    <form id="ai-form" class="tutor-composer">
+      <label class="sr-only" for="ai-input">Mensagem</label>
+      <textarea id="ai-input" name="message" rows="1" required placeholder="Pergunte o que estudar hoje…"></textarea>
+      <div class="tutor-composer-actions">
+        <small id="ai-composer-hint">Enter para enviar, Shift+Enter para quebrar linha.</small>
+        <button id="ai-send" class="button primary" type="submit">Enviar</button>
+      </div>
+    </form>
+  </article>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/tutor.js') }}" defer></script>
+{% endblock %}

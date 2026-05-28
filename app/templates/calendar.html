@@ -1,0 +1,35 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="two-column wide-left">
+  <div class="card">
+    <div class="card-title">
+      <span>Calendário interno</span>
+      <div class="inline-actions">
+        <button class="button ghost active" type="button" data-calendar-view="week">Semanal</button>
+        <button class="button ghost" type="button" data-calendar-view="month">Mensal</button>
+      </div>
+    </div>
+    <p id="google-calendar-status" class="muted-text">Google Calendar não configurado.</p>
+    <div class="filters">
+      <select id="calendar-filter"><option value="">Todos os tipos</option><option value="school">Escola</option><option value="course">Cursinho</option><option value="pending_task">Pendência</option><option value="simulation">Simulado</option><option value="essay">Redação</option><option value="flashcard_review">Revisão</option><option value="material">Material</option><option value="rest">Descanso</option></select>
+    </div>
+    <div id="calendar-list" class="timeline-list"></div>
+  </div>
+  <form id="calendar-form" class="card stack-form">
+    <div class="card-title"><span>Novo evento</span></div>
+    <input type="hidden" name="id">
+    <label>Título<input name="title" required></label>
+    <label>Tipo<select name="event_type"><option value="school">Escola</option><option value="course">Cursinho</option><option value="simulation">Simulado</option><option value="essay">Redação</option><option value="flashcard_review">Revisão</option><option value="material">Material</option><option value="rest">Descanso</option></select></label>
+    <label>Início<input name="start_datetime" type="datetime-local" required></label>
+    <label>Fim<input name="end_datetime" type="datetime-local"></label>
+    <label>Situação<select name="status"><option value="pending">Pendente</option><option value="completed">Concluído</option><option value="missed">Perdido</option></select></label>
+    <label>Notas<textarea name="notes"></textarea></label>
+    <button class="button primary" type="submit">Salvar evento</button>
+  </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/planner.js') }}" defer></script>
+{% endblock %}

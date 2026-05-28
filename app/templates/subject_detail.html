@@ -1,0 +1,46 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="stack" data-subject-id="{{ subject_id }}">
+  <div class="card subject-hero" id="subject-overview"></div>
+
+  <div class="two-column">
+    <form id="front-form" class="card stack-form">
+      <div class="card-title"><span>Nova frente</span></div>
+      <label>Nome<input name="name" required></label>
+      <label>Descrição<textarea name="description"></textarea></label>
+      <label>Ordem<input name="order" type="number" min="0" value="0"></label>
+      <button class="button secondary" type="submit">Adicionar frente</button>
+    </form>
+
+    <form id="topic-form" class="card stack-form">
+      <div class="card-title"><span>Novo assunto</span></div>
+      <label>Frente<select name="front_id" id="topic-front-select"><option value="">Sem frente</option></select></label>
+      <label>Nome<input name="name" required></label>
+      <label>Descrição<textarea name="description"></textarea></label>
+      <div class="inline-fields">
+        <label>Status<select name="status"><option value="nao_iniciado">Não iniciado</option><option value="em_andamento">Em andamento</option><option value="concluido">Concluído</option><option value="revisar">Revisar</option></select></label>
+        <label>Dificuldade<select name="difficulty"><option value="baixa">baixa</option><option value="media" selected>média</option><option value="alta">alta</option></select></label>
+      </div>
+      <label>Ordem<input name="order" type="number" min="0" value="0"></label>
+      <button class="button secondary" type="submit">Adicionar assunto</button>
+    </form>
+  </div>
+
+  <div class="tabs-grid">
+    <div class="card">
+      <div class="card-title"><span>Frentes e assuntos</span></div>
+      <div id="subject-fronts" class="card-list"></div>
+    </div>
+    <div class="card"><div class="card-title"><span>Materiais</span></div><div id="subject-materials" class="card-list"></div></div>
+    <div class="card"><div class="card-title"><span>Flashcards</span></div><div id="subject-decks" class="card-list"></div></div>
+    <div class="card"><div class="card-title"><span>Pendências</span></div><div id="subject-tasks" class="card-list"></div></div>
+    <div class="card"><div class="card-title"><span>Progresso</span></div><p id="subject-progress" class="muted-text"></p></div>
+    <div class="card"><div class="card-title"><span>Sugestão de dinâmica de estudo</span></div><p id="subject-insight" class="muted-text"></p></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/subjects.js') }}" defer></script>
+{% endblock %}

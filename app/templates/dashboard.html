@@ -1,0 +1,86 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="dashboard-grid">
+  <article class="card focus-card">
+    <div class="card-title">
+      <span>Execução de hoje</span>
+      <span id="weekly-priority" class="badge">Equilíbrio</span>
+    </div>
+
+    <div class="inline-actions">
+      <button class="button ghost active" type="button" data-today-view="list">Lista</button>
+      <button class="button ghost" type="button" data-today-view="kanban">Kanban</button>
+      <button class="button ghost" type="button" data-today-view="timeline">Linha do tempo</button>
+    </div>
+
+    <div id="today-plan" class="task-list" data-view="list"></div>
+
+    <div id="today-kanban" class="kanban-board hidden" data-view="kanban">
+      <div class="kanban-column"><h3>Hoje</h3><div id="kanban-today" class="task-list"></div></div>
+      <div class="kanban-column"><h3>Em andamento</h3><div id="kanban-progress" class="task-list"></div></div>
+      <div class="kanban-column"><h3>Atrasado</h3><div id="kanban-overdue" class="task-list"></div></div>
+      <div class="kanban-column"><h3>Concluído</h3><div id="kanban-done" class="task-list"></div></div>
+    </div>
+
+    <div id="today-timeline" class="timeline-list hidden" data-view="timeline"></div>
+
+    <div class="quick-actions">
+      <button class="button secondary" data-reschedule-preview>Estou atrasado, reorganizar minha semana</button>
+      <button class="button ghost" data-priority="Escola">Priorizar escola esta semana</button>
+      <button class="button ghost" data-priority="Vestibular">Priorizar vestibular esta semana</button>
+    </div>
+
+    <div id="reschedule-preview" class="card hidden">
+      <div class="card-title"><span>Preview de reorganização</span></div>
+      <div id="reschedule-preview-list" class="task-list"></div>
+      <div class="inline-actions">
+        <button class="button primary" type="button" id="confirm-reschedule">Confirmar</button>
+        <button class="button ghost" type="button" id="cancel-reschedule">Cancelar</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="card metric-card"><span>Tarefas pendentes</span><strong id="pending-count">0</strong><small id="overdue-count">0 atrasadas</small></article>
+  <article class="card metric-card"><span>Revisões vencidas</span><strong id="revision-count">0</strong><small>flashcards na fila</small></article>
+  <article class="card metric-card"><span>Próximo simulado/prova</span><strong id="next-exam">Sem evento</strong><small>calendário interno</small></article>
+  <article class="card metric-card"><span>Próxima redação</span><strong id="next-essay">Sem registro</strong><small>prática e evolução</small></article>
+
+  <article class="card">
+    <div class="card-title"><span>Progresso da semana</span></div>
+    <div class="progress"><span id="week-progress-bar"></span></div>
+    <p id="week-progress-text" class="muted-text"></p>
+  </article>
+
+  <article class="card">
+    <div class="card-title"><span>Próximas pendências</span></div>
+    <div id="upcoming-tasks" class="task-list"></div>
+  </article>
+
+  <article class="card">
+    <div class="card-title"><span>Revisões de flashcards vencidas</span></div>
+    <div id="due-flashcards" class="task-list"></div>
+  </article>
+
+  <article class="card">
+    <div class="card-title"><span>Matérias em risco</span></div>
+    <div id="risk-subjects" class="badge-list"></div>
+  </article>
+
+  <article class="card chart-card">
+    <div class="card-title"><span>Carga planejada vs realizada</span></div>
+    <canvas id="study-load-chart" height="180"></canvas>
+  </article>
+
+  <article class="card">
+    <div class="card-title"><span>Próximo foco recomendado</span></div>
+    <p id="next-focus" class="large-note"></p>
+    <p id="overload-warning" class="muted-text"></p>
+  </article>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/dashboard.js') }}" defer></script>
+<script src="{{ url_for('static', path='js/planner.js') }}" defer></script>
+{% endblock %}

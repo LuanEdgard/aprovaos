@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="report-page">
+  <div class="card">
+    <div class="card-title"><span>Relatório semanal</span><div class="inline-actions"><button class="button secondary" id="generate-report" type="button">Gerar relatório</button><button class="button ghost" id="print-report" type="button">Exportar visualização HTML</button></div></div>
+    <div id="weekly-report" class="report-grid"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/planner.js') }}" defer></script>
+{% endblock %}
+

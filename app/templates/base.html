@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} · AprovaOS</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/variables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/pages.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/responsive.css') }}">
+    {% block head_extra %}{% endblock %}
+  </head>
+  <body data-page="{{ page_id }}">
+    {% if app_page %}
+      <div class="app-shell">
+        <aside class="sidebar" aria-label="Navegação principal">
+          <a class="brand compact" href="/app/dashboard" aria-label="AprovaOS">
+            <span class="brand-mark">A</span>
+            <span>AprovaOS</span>
+          </a>
+          <nav class="side-nav">
+            {% for label, href, icon in nav_items %}
+              <a class="{% if request.url.path == href %}active{% endif %}" href="{{ href }}">
+                <i data-lucide="{{ icon }}" aria-hidden="true"></i>
+                <span>{{ label }}</span>
+              </a>
+            {% endfor %}
+          </nav>
+        </aside>
+
+        <div class="app-main">
+          <header class="topbar">
+            <button class="icon-button only-mobile" id="sidebar-toggle" type="button" title="Abrir menu">
+              <i data-lucide="menu" aria-hidden="true"></i>
+            </button>
+            <div>
+              <p class="eyebrow">AprovaOS</p>
+              <h1>{{ title }}</h1>
+            </div>
+            <div class="topbar-actions">
+              <button class="icon-button" id="theme-toggle" type="button" title="Alternar tema">
+                <i data-lucide="sun-moon" aria-hidden="true"></i>
+              </button>
+              <div class="user-chip">
+                <span>{{ user.name[:1] }}</span>
+                <strong>{{ user.name }}</strong>
+              </div>
+              <button class="button ghost" id="logout-button" type="button">Sair</button>
+            </div>
+          </header>
+
+          <main class="content">
+            {% block content %}{% endblock %}
+          </main>
+          <footer class="aprova-footer" aria-label="Informações da versão e contato">
+            <p><strong>AprovaOS está em versão beta.</strong></p>
+            <p>Desenvolvido por luan edgard (<a href="https://instagram.com/luanedgard" target="_blank" rel="noopener noreferrer">@luanedgard</a>).</p>
+            <p>Contato: <a href="tel:+5571996916406">(71) 99691-6406</a> · <a href="mailto:luanedgard@hotmail.com">luanedgard@hotmail.com</a> · <a href="mailto:luanedgardfreitas@gmail.com">luanedgardfreitas@gmail.com</a></p>
+          </footer>
+        </div>
+
+        <nav class="mobile-nav" aria-label="Navegação inferior">
+          {% for label, href, icon in nav_items[:5] %}
+            <a class="{% if request.url.path == href %}active{% endif %}" href="{{ href }}">
+              <i data-lucide="{{ icon }}" aria-hidden="true"></i>
+              <span>{{ label }}</span>
+            </a>
+          {% endfor %}
+        </nav>
+      </div>
+    {% else %}
+      <header class="public-nav">
+        <a class="brand" href="/">
+          <span class="brand-mark">A</span>
+          <span>AprovaOS</span>
+        </a>
+        <nav>
+          <a href="/#como-funciona">Como funciona</a>
+          <a href="/#recursos">Recursos</a>
+          <a href="/#duvidas">Dúvidas</a>
+          <button class="icon-button" id="theme-toggle" type="button" title="Alternar tema">
+            <i data-lucide="sun-moon" aria-hidden="true"></i>
+          </button>
+          <a class="button ghost" href="/login">Entrar</a>
+          <a class="button primary" href="/signup">Entrar no beta</a>
+        </nav>
+      </header>
+      <main>
+        {% block public_content %}{% endblock %}
+      </main>
+      <footer class="aprova-footer" aria-label="Informações da versão e contato">
+        <p><strong>AprovaOS está em versão beta.</strong></p>
+        <p>Desenvolvido por luan edgard (<a href="https://instagram.com/luanedgard" target="_blank" rel="noopener noreferrer">@luanedgard</a>).</p>
+        <p>Contato: <a href="tel:+5571996916406">(71) 99691-6406</a> · <a href="mailto:luanedgard@hotmail.com">luanedgard@hotmail.com</a> · <a href="mailto:luanedgardfreitas@gmail.com">luanedgardfreitas@gmail.com</a></p>
+      </footer>
+    {% endif %}
+
+    <div id="toast-region" class="toast-region" aria-live="polite"></div>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="{{ url_for('static', path='js/utils.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/api.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/app.js') }}" defer></script>
+    <script src="{{ url_for('static', path='js/charts.js') }}" defer></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

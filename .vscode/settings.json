@@ -1,0 +1,7 @@
+{
+    "builder.serverUrl": "http://127.0.0.1:8000/",
+    "builder.command": "AprovaOS",
+    "builder.runDevServer": true,
+    "builder.autoDetectDevServer": false,
+    "builder.launchType": "editor"
+}

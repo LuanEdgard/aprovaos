@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="two-column wide-left">
+  <div class="card">
+    <div class="card-title"><span>Matérias</span><button class="button secondary" id="seed-subjects" type="button">Atualizar padrões</button></div>
+    <div id="subjects-list" class="subject-grid"></div>
+  </div>
+  <form id="subject-form" class="card stack-form">
+    <div class="card-title"><span>Nova matéria</span></div>
+    <label>Nome<input name="name" required></label>
+    <label>Área<select name="area"><option>Ciências Humanas</option><option>Ciências da Natureza</option><option>Linguagens</option><option>Matemática</option><option>Redação</option><option>Curso Técnico</option><option>Outros</option></select></label>
+    <label>Origem<select name="source_type"><option value="school">Escola</option><option value="course">Cursinho</option><option value="vestibular">Vestibular</option><option value="technical_course">Curso técnico</option><option value="personal">Pessoal</option></select></label>
+    <label>Cor<input name="color" type="color" value="#3b82f6"></label>
+    <label>Descrição<textarea name="description"></textarea></label>
+    <button class="button primary" type="submit">Salvar matéria</button>
+  </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/subjects.js') }}" defer></script>
+{% endblock %}

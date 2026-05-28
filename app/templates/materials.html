@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="two-column">
+  <div class="stack">
+    <form id="material-upload-form" class="card stack-form">
+      <div class="card-title"><span>Enviar arquivo</span></div>
+      <label>Título<input name="title" required></label>
+      <label>Tipo<select name="material_type"><option value="pdf">PDF</option><option value="text">Texto</option><option value="image">Imagem</option><option value="exercise_list">Lista de exercícios</option><option value="essay_correction">Correção de redação</option><option value="schedule">Cronograma</option><option value="notes">Anotações</option><option value="other">Outro</option></select></label>
+      <label>Fonte<select name="source_type"><option value="school">Escola</option><option value="course">Cursinho</option><option value="vestibular">Vestibular</option><option value="personal">Pessoal</option><option value="technical_course">Curso técnico</option></select></label>
+      <label>Matéria<input name="subject"></label>
+      <label>Etiquetas<input name="tags" placeholder="separe por vírgulas"></label>
+      <label>Arquivo<input name="file" type="file" accept=".pdf,.txt,.md,.png,.jpg,.jpeg" required></label>
+      <button class="button primary" type="submit">Enviar material</button>
+    </form>
+    <form id="material-text-form" class="card stack-form">
+      <div class="card-title"><span>Colar texto</span></div>
+      <label>Título<input name="title" required></label>
+      <label>Tipo<input name="material_type" value="text"></label>
+      <label>Fonte<select name="source_type"><option value="personal">Pessoal</option><option value="school">Escola</option><option value="course">Cursinho</option><option value="vestibular">Vestibular</option><option value="technical_course">Curso técnico</option></select></label>
+      <label>Matéria<input name="subject"></label>
+      <label>Tópico<input name="topic"></label>
+      <label>Subtópico<input name="subtopic"></label>
+      <label>Etiquetas<input name="tags"></label>
+      <label>Texto<textarea name="text" required rows="8"></textarea></label>
+      <button class="button secondary" type="submit">Registrar texto</button>
+    </form>
+  </div>
+  <div class="card">
+    <div class="card-title"><span>Materiais cadastrados</span></div>
+    <div id="materials-list" class="material-list"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/materials.js') }}" defer></script>
+{% endblock %}

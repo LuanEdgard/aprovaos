@@ -1,0 +1,114 @@
+# Builder Rules — AprovaOS UX/UI
+
+## Product Context
+
+AprovaOS is a Brazilian educational SaaS for pre-university students preparing for ENEM, FUVEST, UFBA, UnB, UFPE and similar exams.
+
+It is not a course platform.
+It is not a tutoring platform.
+It is not a promise of approval.
+It is a study operating system.
+
+Core product question:
+"With everything I have to do, what should I study today, why, and how do I recover if I fall behind?"
+
+## Design Direction
+
+Create a professional educational SaaS interface.
+
+The product should feel:
+- organized
+- calm
+- focused
+- reliable
+- modern
+- student-friendly
+- execution-oriented
+
+Avoid:
+- generic AI dashboard style
+- random gradients
+- futuristic dark UI without purpose
+- excessive glassmorphism
+- childish illustrations
+- overuse of icons
+- excessive shadows
+- excessive animations
+- visual clutter
+
+## Brand Metaphor
+
+AprovaOS = study command center.
+
+The interface should make the student feel:
+- "I know what to do today"
+- "I understand my priorities"
+- "I can recover if I fall behind"
+- "My routine is under control"
+
+## Visual System
+
+Use a clean light theme by default.
+
+Recommended semantic colors:
+- Primary: deep educational blue or indigo
+- Secondary: green for completed/progress
+- Warning: amber for attention/overload
+- Danger: red for late tasks
+- Neutral: slate/gray for structure
+- Revision: purple
+- Essay: rose or wine
+- Mock exam: cyan/blue
+- Calendar: teal
+
+Use consistent spacing:
+- 8px base spacing system
+- 16px card padding minimum
+- 24px section gaps
+- 32px dashboard grid gaps on desktop
+
+Typography:
+- strong hierarchy
+- clear section titles
+- readable body text
+- no tiny text for important student tasks
+
+## UX Rules
+
+Prioritize:
+1. what the student must do now
+2. what is late
+3. what is upcoming
+4. what can be recovered
+5. progress and feedback
+
+Do not hide critical actions.
+
+The "Hoje" page must feel like a daily study command center.
+
+## Implementation Rules
+
+Preserve all existing functionality.
+
+Do not change:
+- backend logic
+- routes
+- endpoints
+- form actions
+- input names
+- ids used by JavaScript
+- data attributes
+- database models
+- schemas
+- authentication flow
+
+Prefer:
+- CSS tokens
+- reusable CSS classes
+- layout improvements
+- responsive grids
+- accessible components
+- progressive enhancement
+
+Never use lorem ipsum.
+Use realistic product copy in Portuguese.

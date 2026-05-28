@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="two-column">
+  <form id="exam-form" class="card stack-form">
+    <div class="card-title"><span>Registrar simulado</span></div>
+    <label>Tipo<select name="exam_type"><option>ENEM</option><option>FUVEST</option><option>UFBA</option><option>UnB</option><option>UFPE</option><option>escola</option><option>personalizado</option></select></label>
+    <label>Data<input name="date" type="date" required></label>
+    <label>Nota total<input name="total_score" type="number" step="0.1"></label>
+    <label>Linguagens<input name="score_languages" type="number" step="0.1"></label>
+    <label>Humanas<input name="score_human_sciences" type="number" step="0.1"></label>
+    <label>Natureza<input name="score_natural_sciences" type="number" step="0.1"></label>
+    <label>Matemática<input name="score_math" type="number" step="0.1"></label>
+    <label>Redação<input name="essay_score" type="number" step="0.1"></label>
+    <label>Duração em minutos<input name="duration_minutes" type="number" min="1" max="720"></label>
+    <label>Acertos por matéria<textarea name="correct_by_subject" placeholder="Ex.: Matemática 28/45, Biologia 12/15"></textarea></label>
+    <label>Motivo principal do erro<select name="error_reason"><option></option><option>conteúdo</option><option>interpretação</option><option>atenção</option><option>tempo</option><option>chute</option><option>falta de revisão</option></select></label>
+    <label>Erros principais<textarea name="main_mistakes"></textarea></label>
+    <label>Notas de gestão de tempo<textarea name="notes"></textarea></label>
+    <button class="button primary" type="submit">Salvar simulado</button>
+  </form>
+  <div class="stack">
+    <div class="card chart-card"><div class="card-title"><span>Evolução de nota</span></div><canvas id="exam-score-chart" height="180"></canvas></div>
+    <div class="card"><div class="card-title"><span>Análise</span></div><div id="exam-analysis" class="analysis-list"></div></div>
+    <div class="card"><div class="card-title"><span>Histórico</span></div><div id="exam-list" class="card-list"></div></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/exams.js') }}" defer></script>
+{% endblock %}

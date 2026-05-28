@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="stack gap-lg">
+  <article class="card safety-card">
+    <div class="card-title"><span>Integrações de IA</span><span id="ai-overview-badge" class="badge warning">Carregando</span></div>
+    <p id="ai-overview-text">Verificando provedores internos.</p>
+    <p class="muted-text">As chaves de API são internas do servidor. Elas não aparecem no navegador, no app mobile, em templates, em JavaScript ou nas respostas da API.</p>
+  </article>
+
+  <section>
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Provedores</p>
+        <h2>Status dos provedores internos</h2>
+      </div>
+    </div>
+    <div id="ai-provider-grid" class="provider-grid"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-title"><span>Mix automático por módulo</span></div>
+    <p class="muted-text">O gateway consulta os provedores configurados no backend e sintetiza uma resposta final para o estudante.</p>
+    <div id="ai-routing-form" class="routing-grid"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-title"><span>Monitor de uso</span></div>
+    <p class="muted-text">Este monitor registra apenas metadados técnicos. Prompts, respostas completas e dados privados do estudante não são gravados aqui.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Provedor</th>
+            <th>Modelo</th>
+            <th>Módulo</th>
+            <th>Tipo</th>
+            <th>Status</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody id="ai-usage-body"></tbody>
+      </table>
+    </div>
+  </section>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/ai_integrations.js') }}" defer></script>
+{% endblock %}

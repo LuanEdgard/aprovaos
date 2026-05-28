@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.env
+app/private_ai_keys.py
+.venv/
+venv/
+aprovaos.db
+aprovaos.db-*
+uploads/*
+!uploads/.gitkeep
+server.log
+.aprovaos-server.*
+aprovaos-mobile/node_modules/
+.expo/

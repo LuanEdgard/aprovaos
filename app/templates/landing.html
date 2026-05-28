@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block public_content %}
+<section class="hero">
+  <div class="hero-copy">
+    <span class="pill">Beta em desenvolvimento</span>
+    <h1>Organize escola, cursinho, simulados, redações e revisões em um só lugar.</h1>
+    <p>O AprovaOS transforma sua rotina, seus materiais e seus resultados em um plano de estudos realista, adaptável e feito para a sua vida.</p>
+    <div class="hero-actions">
+      <a class="button primary large" href="/signup">Entrar no beta</a>
+      <a class="button secondary large" href="/signup">Criar meu plano de estudos</a>
+    </div>
+  </div>
+  <div class="hero-panel" aria-label="Prévia do painel AprovaOS">
+    <div class="panel-header">
+      <span>Exemplo de organização</span>
+      <strong>Prioridade: Equilíbrio</strong>
+    </div>
+    <div class="preview-grid">
+      <div><span>08:00</span><strong>Lista de matemática</strong><small>escola · 50 min</small></div>
+      <div><span>15:30</span><strong>Revisão ativa</strong><small>vestibular · 25 min</small></div>
+      <div><span>19:00</span><strong>Flashcards</strong><small>recuperação leve</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-band">
+  <div class="section-heading">
+    <p class="eyebrow">O problema</p>
+    <h2>O estudo quebra quando a vida real entra no calendário.</h2>
+  </div>
+  <div class="feature-grid">
+    <article class="feature-card"><h3>Material espalhado</h3><p>PDF, lista, correção, edital e anotação ficam em lugares diferentes.</p></article>
+    <article class="feature-card"><h3>Prioridade confusa</h3><p>Nem sempre fica claro o que estudar hoje e o que pode esperar.</p></article>
+    <article class="feature-card"><h3>Atraso acumulado</h3><p>Quando uma tarefa cai, o cronograma inteiro vira uma pilha difícil de recuperar.</p></article>
+  </div>
+</section>
+
+<section class="section-band muted" id="como-funciona">
+  <div class="section-heading">
+    <p class="eyebrow">A solução</p>
+    <h2>Seu sistema operacional de estudos.</h2>
+    <p>O AprovaOS não substitui escola, cursinho ou professores. Ele organiza, prioriza, automatiza revisões e adapta o plano quando a rotina muda.</p>
+  </div>
+  <div class="steps">
+    <div><span>1</span><h3>Cadastre sua rotina</h3><p>Inclua horários fixos, transporte, sono e janelas reais de estudo.</p></div>
+    <div><span>2</span><h3>Centralize pendências</h3><p>Registre tarefas da escola, cursinho, vestibular, redação e materiais.</p></div>
+    <div><span>3</span><h3>Execute com ajuste</h3><p>Receba foco do dia, revisões, alertas de sobrecarga e plano de recuperação.</p></div>
+  </div>
+</section>
+
+<section class="section-band" id="recursos">
+  <div class="section-heading">
+    <p class="eyebrow">Recursos principais</p>
+    <h2>Organização acima do conteúdo.</h2>
+  </div>
+  <div class="feature-grid dense">
+    <article class="feature-card"><h3>Hoje</h3><p>Plano diário, tarefas vencidas, revisões e foco da semana.</p></article>
+    <article class="feature-card"><h3>Pendências</h3><p>Escola, cursinho, vestibular, redação, simulado, revisão e materiais enviados.</p></article>
+    <article class="feature-card"><h3>Materiais</h3><p>Envio de arquivos, texto colado, resumo, tarefas e flashcards sugeridos.</p></article>
+    <article class="feature-card"><h3>Flashcards</h3><p>Repetição espaçada simples com Errei, Difícil, Médio e Fácil.</p></article>
+    <article class="feature-card"><h3>Simulados</h3><p>Registro de resultados, áreas fracas, motivos de erro e foco recomendado.</p></article>
+    <article class="feature-card"><h3>Tutor IA</h3><p>Modos de organização, análise, fontes, flashcards e recuperação.</p></article>
+  </div>
+</section>
+
+<section class="split-section">
+  <div>
+    <p class="eyebrow">Para estudantes</p>
+    <h2>Criado para estudantes com rotina cheia.</h2>
+    <p>Ideal para quem precisa conciliar escola, cursinho, simulado, redação, deslocamento, descanso e vida real sem transformar tudo em culpa.</p>
+  </div>
+  <div>
+    <p class="eyebrow">Para cursinhos e escolas</p>
+    <h2>Uma camada de execução para o que já é ensinado.</h2>
+    <p>A plataforma ajuda o estudante a organizar entregas, revisar erros e acompanhar progresso sem prometer correção oficial ou substituir orientação pedagógica.</p>
+  </div>
+</section>
+
+<section class="section-band muted">
+  <div class="section-heading">
+    <p class="eyebrow">Acesso beta</p>
+    <h2>Primeiros usuários convidados.</h2>
+    <p>O MVP está em desenvolvimento e será evoluído com feedback real. Sem métricas inventadas, sem promessa de aprovação, sem cobrança nesta versão inicial.</p>
+    <a class="button primary large" href="/signup">Criar conta beta</a>
+  </div>
+</section>
+
+<section class="section-band">
+  <div class="pricing-card">
+    <p class="eyebrow">Preço</p>
+    <h2>Plano beta gratuito</h2>
+    <p>Durante o MVP, o foco é validar organização, rotina, materiais, flashcards e relatórios. Planos pagos podem ser estudados depois, com transparência.</p>
+  </div>
+</section>
+
+<section class="section-band muted" id="duvidas">
+  <div class="section-heading">
+    <p class="eyebrow">Dúvidas</p>
+    <h2>Dúvidas importantes antes de usar.</h2>
+  </div>
+  <div class="faq-list">
+    <details open><summary>O AprovaOS é um curso?</summary><p>Não. Ele é uma plataforma de organização, priorização, revisão e acompanhamento.</p></details>
+    <details><summary>Ele substitui professor ou cursinho?</summary><p>Não. A escola e o cursinho ensinam; o AprovaOS ajuda a transformar rotina e dados em execução.</p></details>
+    <details><summary>A redação é corrigida oficialmente?</summary><p>Não. O sistema registra correções, estimativas e evolução. Correções oficiais dependem de avaliadores qualificados.</p></details>
+    <details><summary>Meus dados são usados com cuidado?</summary><p>Sim. O MVP evita coletar CPF, endereço e informações desnecessárias. Dados podem ser exportados ou removidos em versões futuras.</p></details>
+  </div>
+</section>
+
+<section class="privacy-note">
+  <strong>Privacidade e segurança</strong>
+  <p>O AprovaOS usa linguagem segura para adolescentes, não faz diagnósticos médicos ou psicológicos e recomenda apoio humano quando o estudante relata sofrimento intenso.</p>
+</section>
+{% endblock %}

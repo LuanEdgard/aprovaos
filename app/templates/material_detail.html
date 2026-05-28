@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="two-column wide-left" data-material-id="{{ material_id }}">
+  <div class="card">
+    <div class="card-title"><span id="material-title">Material</span></div>
+    <div id="material-meta" class="meta-grid"></div>
+    <div class="item-actions">
+      <button class="button secondary" data-material-action="summarize" type="button">Gerar resumo</button>
+      <button class="button ghost" data-material-action="generate-tasks" type="button">Gerar pendências</button>
+      <button class="button ghost" data-material-action="generate-flashcards" type="button">Gerar flashcards</button>
+      <a class="button ghost" href="/app/tutor">Perguntar ao Tutor IA</a>
+    </div>
+    <h3>Resumo e classificação</h3>
+    <p id="material-summary" class="muted-text"></p>
+    <form id="material-question-form" class="stack-form">
+      <label>Perguntar sobre este material<textarea name="question" required></textarea></label>
+      <button class="button primary" type="submit">Perguntar com fonte</button>
+    </form>
+    <p id="material-answer" class="muted-text"></p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span>Texto extraído</span></div>
+    <pre id="material-text" class="text-preview"></pre>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/materials.js') }}" defer></script>
+{% endblock %}

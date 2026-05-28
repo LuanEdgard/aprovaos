@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block public_content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Entrar</p>
+    <h1>Volte para o seu plano de execução.</h1>
+    <form id="login-form" class="stack-form">
+      <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+      <label>Senha<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="button primary full" type="submit">Entrar</button>
+    </form>
+    <p class="form-note">Ainda não tem conta? <a href="/signup">Entrar no beta</a></p>
+  </div>
+</section>
+{% endblock %}
+

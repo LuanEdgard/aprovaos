@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="two-column">
+  <form id="essay-form" class="card stack-form">
+    <div class="card-title"><span>Registrar redação</span></div>
+    <p class="muted-text">Use como estimativa, registro de correções, análise de evolução e organização da prática.</p>
+    <label>Tema<input name="theme" required></label>
+    <label>Data<input name="date" type="date" required></label>
+    <label>Nota total<input name="total_score" type="number" step="0.1"></label>
+    <div class="inline-fields"><label>C1<input name="c1" type="number" step="0.1"></label><label>C2<input name="c2" type="number" step="0.1"></label></div>
+    <div class="inline-fields"><label>C3<input name="c3" type="number" step="0.1"></label><label>C4<input name="c4" type="number" step="0.1"></label></div>
+    <label>C5<input name="c5" type="number" step="0.1"></label>
+    <label>Comentários do professor ou corretor<textarea name="teacher_comments"></textarea></label>
+    <label>Erros recorrentes<textarea name="recurring_errors"></textarea></label>
+    <label>Repertório usado<textarea name="repertoire_used"></textarea></label>
+    <label>Pontos de melhoria<textarea name="improvement_points"></textarea></label>
+    <button class="button primary" type="submit">Salvar redação</button>
+  </form>
+  <div class="stack">
+    <div class="card chart-card"><div class="card-title"><span>Evolução de redação</span></div><canvas id="essay-score-chart" height="180"></canvas></div>
+    <div class="card"><div class="card-title"><span>Próxima meta</span></div><div id="essay-analysis" class="analysis-list"></div></div>
+    <div class="card"><div class="card-title"><span>Histórico</span></div><div id="essay-list" class="card-list"></div></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/essays.js') }}" defer></script>
+{% endblock %}

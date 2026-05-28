@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block public_content %}
+<section class="onboarding-page">
+  <div class="section-heading narrow">
+    <span class="pill">Configuração inicial</span>
+    <h1>Vamos montar um perfil de estudo realista.</h1>
+    <p>Responda o suficiente para o AprovaOS entender sua rotina. Você pode ajustar tudo depois.</p>
+  </div>
+  <form id="onboarding-form" class="onboarding-form">
+    <div class="form-grid">
+      <label>Nome<input name="name" value="{{ user.name }}" required></label>
+      <label>Idade<input name="age" type="number" min="10" max="100"></label>
+      <label>Série ou situação atual<input name="school_year" placeholder="3º ano, egresso, cursinho..."></label>
+      <label>Tipo de rotina<select name="routine_type"><option>escola regular</option><option>escola integral</option><option>técnico integrado</option><option>cursinho</option><option>egresso</option><option>trabalho</option><option>estágio</option></select></label>
+      <label>Vestibulares-alvo<input name="target_exams" placeholder="ENEM, FUVEST, UFBA, UnB..."></label>
+      <label>Curso desejado<input name="target_course"></label>
+      <label>Universidade desejada<input name="target_universities"></label>
+      <label>Usa cursinho?<select name="uses_cursinho"><option>não</option><option>online</option><option>presencial</option><option>online e presencial</option></select></label>
+      <label>Nome do cursinho<input name="cursinho_name"></label>
+      <label>Horários fixos da escola<textarea name="school_schedule"></textarea></label>
+      <label>Horários fixos do cursinho<textarea name="cursinho_schedule"></textarea></label>
+      <label>Tempo médio de transporte<input name="transport_time" placeholder="Ex.: 40 min por trecho"></label>
+      <label>Horário de sono<input name="sleep_schedule" placeholder="Ex.: 23h às 6h30"></label>
+      <label>Horas livres por dia<input name="free_hours_per_day" placeholder="Ex.: 2h em dias úteis"></label>
+      <label>Matérias fortes<input name="strong_subjects" placeholder="separe por vírgulas"></label>
+      <label>Matérias fracas<input name="weak_subjects" placeholder="separe por vírgulas"></label>
+      <label>Últimas notas de ENEM, vestibular ou simulado<textarea name="latest_scores"></textarea></label>
+      <label>Notas de redação<textarea name="essay_scores"></textarea></label>
+      <label>Maior dificuldade<select name="main_difficulty"><option>falta de tempo</option><option>procrastinação</option><option>excesso de material</option><option>ansiedade</option><option>falta de método</option><option>desorganização</option><option>dificuldade de revisar</option></select></label>
+      <label>Prioridade inicial<select name="weekly_priority"><option>Equilíbrio</option><option>Escola</option><option>Vestibular</option><option>Recuperação</option></select></label>
+    </div>
+    <button class="button primary large" type="submit">Gerar perfil e plano inicial</button>
+  </form>
+  <div id="onboarding-result" class="result-panel hidden"></div>
+</section>
+{% endblock %}
+

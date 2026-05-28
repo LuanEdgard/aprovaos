@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="settings-grid">
+  <article class="card">
+    <div class="card-title"><span>Perfil</span></div>
+    <p><strong>{{ user.name }}</strong></p>
+    <p class="muted-text">{{ user.email }}</p>
+    {% if user.profile %}
+      <p>{{ user.profile.study_profile_summary }}</p>
+    {% else %}
+      <p class="muted-text">Complete o onboarding para gerar um perfil de estudo.</p>
+    {% endif %}
+  </article>
+  <article class="card">
+    <div class="card-title"><span>Tema e notificações</span></div>
+    <form id="settings-form" class="stack-form">
+      <label>Tema preferido
+        <select name="theme">
+          <option value="escuro">escuro</option>
+          <option value="claro">claro</option>
+        </select>
+      </label>
+      <label class="check-row"><input name="notify_reviews" type="checkbox"> Lembrar revisões e prazos importantes</label>
+      <label class="check-row"><input name="notify_weekly_summary" type="checkbox"> Receber resumo semanal</label>
+      <button class="button primary" type="submit">Salvar preferências</button>
+    </form>
+  </article>
+  <article class="card">
+    <div class="card-title"><span>Dados e privacidade</span></div>
+    <p>O MVP coleta apenas dados necessários para organizar rotina, materiais, tarefas, simulados, redações e revisões. Não pedimos CPF, endereço ou nome exato da escola.</p>
+    <p>Exportação de dados e exclusão de conta estão previstas para uma próxima etapa do beta.</p>
+  </article>
+  {% if is_admin and ai_settings_ui_enabled %}
+  <article class="card">
+    <div class="card-title"><span>Integrações de IA</span></div>
+    <p>Veja o status das IAs internas do servidor, teste conexões e acompanhe uso sem conteúdo sensível.</p>
+    <a class="button primary" href="/app/settings/ai-integrations">Abrir integrações de IA</a>
+  </article>
+  {% endif %}
+  <article class="card">
+    <div class="card-title"><span>Segurança para adolescentes</span></div>
+    <p>O AprovaOS usa linguagem de apoio, não faz diagnósticos médicos ou psicológicos e recomenda procurar adulto responsável, orientação escolar ou profissional qualificado quando houver sofrimento intenso.</p>
+    <p>Usuários mais jovens devem contar com consentimento e acompanhamento de responsável.</p>
+  </article>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/settings.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,68 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="two-column wide-left">
+  <div class="stack">
+    <div class="summary-cards" id="pending-summary-cards">
+      <article class="card summary-item"><small>Atrasadas</small><strong id="sum-overdue">0</strong></article>
+      <article class="card summary-item"><small>Para hoje</small><strong id="sum-today">0</strong></article>
+      <article class="card summary-item"><small>Próximos 7 dias</small><strong id="sum-week">0</strong></article>
+      <article class="card summary-item"><small>Revisões pendentes</small><strong id="sum-reviews">0</strong></article>
+      <article class="card summary-item"><small>Alta prioridade</small><strong id="sum-high">0</strong></article>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span>Pendências</span>
+        <button class="button secondary" data-reschedule-preview>Reorganizar atrasos</button>
+      </div>
+
+      <div class="filters filters-grid">
+        <select id="task-source-filter"><option value="">Todas as fontes</option><option value="school">Escola</option><option value="course">Cursinho</option><option value="vestibular">Vestibular</option><option value="personal">Pessoal</option><option value="technical_course">Curso técnico</option></select>
+        <select id="task-category-filter"><option value="">Todas as categorias</option><option value="watch_lesson">Assistir aula</option><option value="review_lesson">Revisar aula</option><option value="do_exercises">Exercícios</option><option value="essay">Redação</option><option value="mock_exam">Simulado</option><option value="material_review">Revisar material</option><option value="flashcard_review">Flashcards</option></select>
+        <select id="task-status-filter"><option value="">Todas as situações</option><option value="pending">Pendente</option><option value="completed">Concluída</option><option value="late">Atrasada</option><option value="rescheduled">Reagendada</option></select>
+        <select id="task-priority-filter"><option value="">Todas as prioridades</option><option value="urgente">urgente</option><option value="alta">alta</option><option value="média">média</option><option value="baixa">baixa</option></select>
+        <select id="task-subject-filter"><option value="">Todas as matérias</option></select>
+        <input id="task-search" placeholder="Buscar por título, descrição ou assunto">
+        <select id="task-order"><option value="deadline">Ordenar por prazo</option><option value="priority">Ordenar por prioridade</option><option value="duration">Ordenar por duração</option></select>
+      </div>
+
+      <div id="tasks-list" class="task-list grouped"></div>
+    </div>
+
+    <div id="reschedule-preview" class="card hidden">
+      <div class="card-title"><span>Preview de reorganização</span></div>
+      <div id="reschedule-preview-list" class="task-list"></div>
+      <div class="inline-actions">
+        <button class="button primary" type="button" id="confirm-reschedule">Confirmar</button>
+        <button class="button ghost" type="button" id="cancel-reschedule">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <form id="task-form" class="card stack-form">
+    <div class="card-title"><span>Adicionar pendência</span></div>
+    <input type="hidden" name="id">
+    <label>Título<input name="title" required></label>
+    <label>Descrição<textarea name="description"></textarea></label>
+    <label>Categoria<select name="task_category"><option value="watch_lesson">Assistir aula</option><option value="review_lesson">Revisar aula</option><option value="do_exercises">Fazer exercícios</option><option value="essay">Redação</option><option value="mock_exam">Simulado</option><option value="school_work">Trabalho escolar</option><option value="reading">Leitura</option><option value="flashcard_review">Revisar flashcards</option><option value="material_review">Revisar material</option><option value="correction_review">Revisar correção</option><option value="other">Outro</option></select></label>
+    <label>Matéria<select name="subject_id" id="task-subject-select"><option value="">Sem matéria vinculada</option></select></label>
+    <label>Frente<select name="front_id" id="task-front-select"><option value="">Sem frente</option></select></label>
+    <label>Assunto<select name="topic_id" id="task-topic-select"><option value="">Sem assunto</option></select></label>
+    <label>Subtópico<input name="subtopic"></label>
+    <label>Fonte<select name="source_type"><option value="school">Escola</option><option value="course">Cursinho</option><option value="vestibular">Vestibular</option><option value="personal">Pessoal</option><option value="technical_course">Curso técnico</option><option value="other">Outro</option></select></label>
+    <label>Prazo<input name="deadline" type="date"></label>
+    <label>Duração estimada em minutos<input name="estimated_minutes" type="number" min="5" value="50"></label>
+    <label>Prioridade<select name="priority"><option value="urgente">urgente</option><option value="alta">alta</option><option value="média" selected>média</option><option value="baixa">baixa</option></select></label>
+    <label>Situação<select name="status"><option value="pending">Pendente</option><option value="completed">Concluída</option><option value="late">Atrasada</option><option value="rescheduled">Reagendada</option></select></label>
+    <div class="inline-actions">
+      <button class="button primary" type="submit">Salvar pendência</button>
+      <button class="button ghost" id="task-form-reset" type="button">Limpar</button>
+    </div>
+  </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/planner.js') }}" defer></script>
+{% endblock %}

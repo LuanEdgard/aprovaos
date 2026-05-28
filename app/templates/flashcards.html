@@ -1,0 +1,67 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="stack">
+  <div class="summary-cards" id="deck-summary"></div>
+
+  <div class="two-column wide-left">
+    <div class="card review-card">
+      <div class="card-title"><span>Revisão de hoje</span><span id="due-count" class="badge">0 cartões</span></div>
+      <div id="review-area" class="review-area"></div>
+    </div>
+
+    <form id="flashcard-form" class="card stack-form">
+      <div class="card-title"><span>Novo flashcard</span></div>
+      <label>Baralho<input name="deck_title" placeholder="Ex.: Biologia ENEM"></label>
+      <label>Matéria<select name="subject_id" id="flashcard-subject-select"><option value="">Sem matéria vinculada</option></select></label>
+      <label>Frente<select name="front_id" id="flashcard-front-select"><option value="">Sem frente</option></select></label>
+      <label>Assunto<select name="topic_id" id="flashcard-topic-select"><option value="">Sem assunto</option></select></label>
+      <label>Frente do card<textarea name="front" required></textarea></label>
+      <label>Verso<textarea name="back" required></textarea></label>
+      <label>Tag<input name="tag" placeholder="ENEM/FUVEST::Área::Matéria::Conteúdo"></label>
+      <button class="button primary" type="submit">Criar flashcard</button>
+    </form>
+  </div>
+
+  <div class="card stack-form">
+    <div class="card-title"><span>Filtros</span></div>
+    <div class="filters filters-grid">
+      <select id="filter-deck"><option value="">Todos os baralhos</option></select>
+      <select id="filter-subject"><option value="">Todas as matérias</option></select>
+      <select id="filter-front"><option value="">Todas as frentes</option></select>
+      <select id="filter-topic"><option value="">Todos os assuntos</option></select>
+      <input id="filter-tag" placeholder="Filtrar por tag">
+      <label class="check-row"><input type="checkbox" id="filter-due-today"> Somente vencidos hoje</label>
+    </div>
+  </div>
+
+  <div class="two-column">
+    <form id="flashcard-upload-form" class="card stack-form">
+      <div class="card-title"><span>Gerar por arquivo</span></div>
+      <label>Título<input name="title" required></label>
+      <label>Fonte<select name="source_type"><option value="personal">Pessoal</option><option value="school">Escola</option><option value="course">Cursinho</option><option value="vestibular">Vestibular</option></select></label>
+      <label>Matéria<input name="subject"></label>
+      <label>Arquivo<input name="file" type="file" accept=".pdf,.txt,.md" required></label>
+      <button class="button secondary" type="submit">Enviar e gerar flashcards</button>
+      <a class="button ghost" href="/api/flashcards/export.csv">Exportar CSV</a>
+    </form>
+
+    <form id="flashcard-text-generator-form" class="card stack-form">
+      <div class="card-title"><span>Gerar flashcards a partir de material (texto)</span></div>
+      <label>Título do material<input name="title" required></label>
+      <label>Texto base<textarea name="text" rows="8" required></textarea></label>
+      <button class="button secondary" type="submit">Gerar e revisar antes de salvar</button>
+      <div id="flashcard-text-preview" class="task-list"></div>
+    </form>
+  </div>
+
+  <div class="card span-all">
+    <div class="card-title"><span>Todos os flashcards</span></div>
+    <div id="flashcard-list" class="card-list"></div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/flashcards.js') }}" defer></script>
+{% endblock %}
